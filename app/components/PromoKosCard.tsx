@@ -4,8 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { Gift, MapPin } from "lucide-react";
 
+interface Kost {
+  image: string;
+  title: string;
+  logo: string;
+  type: string;
+  roomLeft: number;
+  location: string;
+  facilities: string;
+  promo: string;
+  price: string;
+}
+
 interface Props {
-  kost: any;
+  kost: Kost;
 }
 
 export default function PromoKosCard({ kost }: Props) {

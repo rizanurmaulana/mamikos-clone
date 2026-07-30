@@ -28,11 +28,11 @@ export default function Footer() {
             />
 
             <p className="mt-5 text-sm leading-7 text-gray-600">
-              Dapatkan <strong>"info kost murah"</strong> hanya di Mamikos App.
+              Dapatkan <strong>&quot;info kost murah&quot;</strong> hanya di Mamikos App.
             </p>
 
             <p className="mt-6 font-semibold text-gray-900">
-              Mau "Sewa Kost Murah"?
+              Mau &quot;Sewa Kost Murah&quot;?
             </p>
 
             <div className="mt-4 flex gap-3">

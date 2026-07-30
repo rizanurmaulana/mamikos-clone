@@ -4,8 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 
+interface Kost {
+  image: string;
+  title: string;
+  type: string;
+  roomLeft: number;
+  location: string;
+  facilities?: string;
+  price: string;
+}
+
 interface RecommendationCardProps {
-  kost: any;
+  kost: Kost;
 }
 
 export default function RecommendationCard({ kost }: RecommendationCardProps) {
