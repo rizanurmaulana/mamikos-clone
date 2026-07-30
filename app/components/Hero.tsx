@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 export default function HeroSection() {
   return (
     <section>
-      <div className="relative mx-auto flex max-w-6xl items-center overflow-hidden px-6 py-16 lg:px-10">
+      <div className="relative mx-auto flex max-w-6xl items-center overflow-hidden px-4 py-16 sm:px-6 lg:px-10">
         {/* Background Illustration */}
         <Image
           src="/images/bg_hero_section_top.png"
