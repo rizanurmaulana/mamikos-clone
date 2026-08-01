@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
 body {
-  font-family: Open-Sans, Helvetica, sans-serif;
+  font-family: Lato, Open-Sans, Helvetica, sans-serif;
+}
+
+@theme {
+  --color-primary-50: #ecfbf2;
+  --color-primary-100: #d4f5e0;
+  --color-primary-200: #a9ebc2;
+  --color-primary-300: #7ee1a3;
+  --color-primary-400: #4fd17c;
+  --color-primary-500: #1baa56;
+  --color-primary-600: #16954b;
+  --color-primary-700: #127d3f;
+  --color-primary-800: #0d6432;
+  --color-primary-900: #084a24;
+  --color-primary-950: #042e16;
 }
