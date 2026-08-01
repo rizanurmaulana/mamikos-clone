@@ -15,21 +15,13 @@ import { promos } from "../data/promos";
 export default function Carousel() {
   return (
     <section className="py-8 sm:py-10 lg:py-12">
-      <div className="mx-auto max-w-6xl overflow-hidden px-4 sm:px-6 lg:px-0">
+      <div className="mx-auto max-w-6xl overflow-x-hidden">
         <Swiper
           modules={[Navigation, Autoplay]}
           loop
           centeredSlides
-          slidesPerView={"auto"}
+          slidesPerView="auto"
           spaceBetween={16}
-          breakpoints={{
-            640: {
-              spaceBetween: 20,
-            },
-            1024: {
-              spaceBetween: 24,
-            },
-          }}
           navigation={{
             prevEl: ".promo-prev",
             nextEl: ".promo-next",
@@ -38,22 +30,41 @@ export default function Carousel() {
             delay: 5000,
             disableOnInteraction: false,
           }}
-          className="!overflow-visible"
+          breakpoints={{
+            640: {
+              spaceBetween: 20,
+            },
+            1024: {
+              spaceBetween: 24,
+            },
+          }}
+          className="promo-swiper"
         >
           {promos.map((promo) => (
             <SwiperSlide
               key={promo.id}
-              className="!w-[calc(100vw-2rem)] sm:!w-[min(520px,calc(100vw-3rem))] lg:!w-[590px]"
+              className="
+                      w-[92vw]!
+                      sm:w-[80vw]!
+                      md:w-160!
+                      lg:w-147.5!
+                      xl:w-160!
+                    "
             >
               <Link href={promo.link} target="_blank">
-                <div className="overflow-hidden rounded-xl transition-all duration-300">
+                <div className="promo-slide overflow-hidden rounded-xl">
                   <Image
                     src={promo.image}
-                    alt="Promo"
+                    alt={promo.title ?? "Promo"}
                     width={590}
                     height={250}
-                    sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) 520px, 590px"
-                    className="aspect-[590/250] h-auto w-full object-cover"
+                    sizes="
+                      (max-width:640px) 92vw,
+                      (max-width:768px) 80vw,
+                      (max-width:1024px) 640px,
+                      590px
+                      "
+                    className="aspect-590/250 w-full object-cover"
                   />
                 </div>
               </Link>
@@ -61,37 +72,20 @@ export default function Carousel() {
           ))}
         </Swiper>
 
-        {/* Bottom */}
-        <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:mt-8 sm:flex-row sm:gap-8 lg:mt-10 lg:gap-10">
-          <button className="promo-prev flex h-11 w-11 items-center justify-center rounded-full bg-white shadow transition hover:shadow-lg sm:h-12 sm:w-12">
+        <div className="mt-8 mb-4 flex items-center justify-center gap-8">
+          <button className="promo-prev flex h-12 w-12 items-center justify-center rounded-full bg-white shadow transition hover:shadow-lg cursor-pointer">
             <ChevronLeft size={22} />
           </button>
 
-          <Link
-            href="/promo"
-            className="text-sm font-semibold hover:text-green-600 sm:text-base"
-          >
+          <Link href="/promo" className="text-sm font-semibold hover:underline">
             Lihat semua promo
           </Link>
 
-          <button className="promo-next flex h-11 w-11 items-center justify-center rounded-full bg-white shadow transition hover:shadow-lg sm:h-12 sm:w-12">
+          <button className="promo-next flex h-12 w-12 items-center justify-center rounded-full bg-white shadow transition hover:shadow-lg cursor-pointer">
             <ChevronRight size={22} />
           </button>
         </div>
       </div>
-
-      <style jsx global>{`
-        .swiper-slide {
-          opacity: 0.45;
-          transform: scale(0.82);
-          transition: all 0.35s ease;
-        }
-
-        .swiper-slide-active {
-          opacity: 1;
-          transform: scale(1);
-        }
-      `}</style>
     </section>
   );
 }
