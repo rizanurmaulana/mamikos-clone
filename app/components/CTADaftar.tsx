@@ -3,43 +3,46 @@ import Link from "next/link";
 
 export default function CTADaftar() {
   return (
-    <section className="py-4">
+    <section className="px-4 py-4 md:px-6 xl:px-0">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-gray-200">
-        <div
-          className="relative overflow-hidden rounded-2xl"
-          style={{
-            backgroundImage: "url('/images/landing-owner-entry-bg.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="relative z-10 flex flex-col items-center justify-between gap-10 lg:flex-row">
+        <div className="relative h-44 overflow-hidden rounded-2xl">
+          {/* Background Image */}
+          <Image
+            src="/images/cta/landing-owner-entry-bg.webp"
+            alt=""
+            fill
+            priority
+            className="-z-10 object-cover"
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 flex h-full items-center justify-between">
             {/* Left Content */}
-            <div className="max-w-lg ps-12 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold leading-tight">
+            <div className="max-w-lg ps-4 md:ps-6 lg:ps-10">
+              <h2 className="text-xl font-bold text-gray-800 md:text-2xl">
                 Daftarkan Kos Anda di Mamikos
               </h2>
 
-              <p className="mt-4 text-base">
+              <p className="mt-2 text-sm text-gray-800 md:text-base">
                 Berbagai fitur dan layanan untuk meningkatkan bisnis kos Anda.
               </p>
 
               <Link
                 href="#"
-                className="mt-4 inline-flex items-center rounded-lg bg-green-500 px-4 py-2 font-semibold text-white text-sm transition hover:bg-green-600 w-fit"
+                className="mt-3 inline-flex w-fit items-center rounded-lg bg-primary-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary-600"
               >
                 Pelajari Lebih Lanjut
               </Link>
             </div>
 
             {/* Right Image */}
-            <div className="relative h-65 w-full max-w-md">
+            <div className="relative hidden h-full w-90 overflow-hidden md:block">
               <Image
-                src="/images/landing-owner-entry.webp"
+                src="/images/cta/landing-owner-entry.webp"
                 alt="Daftarkan Kos"
-                fill
-                className="object-contain object-bottom-right"
-                priority
+                width={360}
+                height={320}
+                className="absolute right-0 top-1/2 h-80 w-auto -translate-y-1/2"
               />
             </div>
           </div>
