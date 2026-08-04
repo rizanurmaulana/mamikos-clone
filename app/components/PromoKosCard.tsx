@@ -5,24 +5,32 @@ import Link from "next/link";
 import { Gift, MapPin } from "lucide-react";
 
 interface Kost {
+  link: string;
   image: string;
   title: string;
   logo: string;
   type: string;
-  roomLeft: number;
+  roomLeft?: number;
   location: string;
   facilities: string;
   promo: string;
-  price: string;
+  price: number;
 }
 
 interface Props {
   kost: Kost;
 }
 
+const formatRupiah = (value: number) =>
+  new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0,
+  }).format(value);
+
 export default function PromoKosCard({ kost }: Props) {
   return (
-    <Link href="#" className="group overflow-hidden rounded-2xl bg-white">
+    <Link href={kost.link} className="group overflow-hidden rounded-2xl bg-white">
       {/* Image */}
       <div className="relative overflow-hidden rounded-2xl">
         <Image
@@ -45,24 +53,31 @@ export default function PromoKosCard({ kost }: Props) {
             {kost.type}
           </span>
 
-          <span className="text-gray-500">Sisa {kost.roomLeft} kamar</span>
+          {kost.roomLeft && (
+            <span className="text-red-600 text-xs italic">
+              Sisa {kost.roomLeft} kamar
+            </span>
+          )}
         </div>
 
-        <h3 className="line-clamp-2 font-semibold">{kost.title}</h3>
+        <h3 className="line-clamp-1 font-semibold">{kost.title}</h3>
 
-        <div className="flex items-center gap-1 text-sm text-gray-500">
-          <MapPin size={14} />
+        <p className="text-sm text-gray-500 flex items-center gap-2">
+          <MapPin size={14} className="inline-block" />
           {kost.location}
-        </div>
+        </p>
 
-        <p className="line-clamp-1 text-sm text-gray-500">{kost.facilities}</p>
+        <p className="line-clamp-1 text-xs text-gray-500">{kost.facilities}</p>
 
         <span className="flex items-center gap-1 text-sm font-semibold text-green-600">
           <Gift size={14} className="inline-block" />
           {kost.promo}
         </span>
 
-        <p className="font-semibold">{kost.price}</p>
+        <div className="flex items-center gap-1">
+          <p className="font-semibold">{formatRupiah(kost.price)}</p>
+          <span className="font-normal">/bulan</span>
+        </div>
       </div>
     </Link>
   );

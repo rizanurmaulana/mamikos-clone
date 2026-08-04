@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "static.mamikos.com",
       },
+      {
+        protocol: "https",
+        hostname: "mamikos.com",
+      },
     ],
   },
 };

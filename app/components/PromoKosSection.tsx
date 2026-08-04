@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -18,42 +18,47 @@ const cities = [
 
 export default function PromoKosSection() {
   const [city, setCity] = useState("Semua Kota");
-  const [start, setStart] = useState(0);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const filtered =
     city === "Semua Kota"
       ? promoRooms
       : promoRooms.filter((item) => item.city === city);
 
-  const visible = filtered.slice(start, start + 4);
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
 
-  const next = () => {
-    if (start + 4 < filtered.length) {
-      setStart((prev) => prev + 1);
-    }
-  };
+    const container = scrollRef.current;
 
-  const prev = () => {
-    if (start > 0) {
-      setStart((prev) => prev - 1);
-    }
+    container.scrollBy({
+      left:
+        direction === "right" ? container.clientWidth : -container.clientWidth,
+      behavior: "smooth",
+    });
   };
 
   return (
     <section className="py-14">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-0">
         {/* Header */}
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Kos yang lagi promo</h2>
+            <h2 className="text-xl font-bold text-gray-800 md:text-2xl">
+              Kos yang lagi promo
+            </h2>
 
             <select
               value={city}
               onChange={(e) => {
                 setCity(e.target.value);
-                setStart(0);
+
+                scrollRef.current?.scrollTo({
+                  left: 0,
+                  behavior: "smooth",
+                });
               }}
-              className="bg-transparent text-2xl font-semibold text-green-600 outline-none"
+              className="text-primary-500 w-44 text-xl font-semibold focus:outline-none md:text-2xl"
             >
               {cities.map((city) => (
                 <option key={city}>{city}</option>
@@ -61,37 +66,56 @@ export default function PromoKosSection() {
             </select>
           </div>
 
-          <div className="flex items-center gap-6 divide-x">
+          <div className="hidden items-center gap-6 lg:flex">
             <Link
-              href="/promo-kos"
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold hover:bg-gray-100"
+              href="https://mamikos.com/promo-kost?city=Semua%20Kota"
+              className="text-sm text-gray-800 font-semibold hover:underline"
             >
               Lihat semua
             </Link>
 
+            <div className="h-6 w-px bg-gray-200" />
+
             <div className="flex gap-2 pl-6">
               <button
-                onClick={prev}
-                className="rounded-full border p-2 hover:bg-gray-100"
+                onClick={() => scroll("left")}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow transition hover:shadow-lg cursor-pointer"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={20} />
               </button>
 
               <button
-                onClick={next}
-                className="rounded-full border p-2 hover:bg-gray-100"
+                onClick={() => scroll("right")}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow transition hover:shadow-lg cursor-pointer"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={20} />
               </button>
             </div>
           </div>
         </div>
 
         {/* Card */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {visible.map((kost) => (
-            <PromoKosCard key={kost.id} kost={kost} />
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto md:overflow-x-hidden snap-x snap-mandatory scroll-smooth scrollbar-hide"
+        >
+          {filtered.map((kost) => (
+            <div
+              key={kost.id}
+              className="w-52 shrink-0 snap-start md:w-[calc((100%-3rem)/4)]"
+            >
+              <PromoKosCard kost={kost} />
+            </div>
           ))}
+        </div>
+        {/* Mobile Button */}
+        <div className="mt-5 flex justify-center lg:hidden">
+          <Link
+            href="https://mamikos.com/promo-kost?city=Semua%20Kota"
+            className="text-sm text-gray-800 font-semibold hover:underline"
+          >
+            Lihat semua
+          </Link>
         </div>
       </div>
     </section>
