@@ -43,7 +43,7 @@ export default function PromoKosSection() {
       <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-0">
         {/* Header */}
         <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col md:flex-row gap-2 md:items-center">
             <h2 className="text-xl font-bold text-gray-800 md:text-2xl">
               Kos yang lagi promo
             </h2>

@@ -5,6 +5,7 @@ import Link from "next/link";
 
 interface CampusCardProps {
   campus: {
+    link: string;
     name: string;
     city: string;
     logo: string;
@@ -14,10 +15,10 @@ interface CampusCardProps {
 export default function CampusCard({ campus }: CampusCardProps) {
   return (
     <Link
-      href="#"
-      className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 transition hover:border-green-500 hover:shadow-md"
+      href={campus.link}
+      className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 transition hover:shadow-lg"
     >
-      <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-xl bg-gray-50">
+      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-gray-50">
         <Image
           src={campus.logo}
           alt={campus.name}

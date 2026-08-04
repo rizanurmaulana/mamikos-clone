@@ -8,7 +8,7 @@ export const promoRooms = [
     logo: "/images/icon-kos-andalan.svg",
     type: "Putri",
     roomLeft: undefined,
-    title: "KKost Brown Residence Tipe Executive",
+    title: "Kost Brown Residence Tipe Executive",
     location: "Rawa Bedar",
     facilities:
       "K. Mandi Dalam · WiFi · AC · Kloset Duduk · Kasur · Akses 24 Jam",
