@@ -6,6 +6,7 @@ import CTAKos from "./components/CTAKos";
 import CTASurvey from "./components/CTASurvey";
 import FeatureSection from "./components/FeatureSection";
 import Footer from "./components/FooterSection";
+import Header from "./components/Header";
 import Hero from "./components/Hero";
 import PromoKosSection from "./components/PromoKosSection";
 import PromoSection from "./components/PromoSection";
@@ -14,6 +15,7 @@ import RecommendationSection from "./components/RecommendationSection";
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
       <Carousel />
       <CTADaftar />
