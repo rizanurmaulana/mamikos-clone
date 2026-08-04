@@ -8,7 +8,7 @@ interface Kost {
   link: string;
   image: string;
   title: string;
-  logo: string;
+  verified: string;
   type: string;
   roomLeft?: number;
   location: string;
@@ -30,20 +30,34 @@ const formatRupiah = (value: number) =>
 
 export default function PromoKosCard({ kost }: Props) {
   return (
-    <Link href={kost.link} className="group overflow-hidden rounded-2xl bg-white">
+    <Link
+      href={kost.link}
+      className="group overflow-hidden rounded-2xl bg-white"
+    >
       {/* Image */}
-      <div className="relative overflow-hidden rounded-2xl">
-        <Image
-          src={kost.image}
-          alt={kost.title}
-          width={320}
-          height={220}
-          className="h-44 w-full object-cover transition duration-300 group-hover:scale-105"
-        />
+      <div className="overflow-hidden rounded-2xl">
+        <div className="relative">
+          {/* Image */}
+          <div className="h-32 w-full overflow-hidden md:h-42">
+            <Image
+              src={kost.image}
+              alt={kost.title}
+              width={320}
+              height={220}
+              className="h-full w-full object-cover transition duration-300 hover:scale-105"
+            />
+          </div>
 
-        {/* Logo */}
-        <div className="absolute left-0 top-0 rounded-br-xl bg-white px-2 py-1 shadow">
-          <Image src={kost.logo} alt="logo" width={14} height={14} />
+          {/* Verified Logo */}
+          <div className="absolute left-0 top-0 flex h-6 items-center justify-center rounded-br-lg bg-white px-2">
+            <Image
+              src={kost.verified}
+              alt="Verified"
+              width={14}
+              height={14}
+              className="h-4 w-auto object-contain"
+            />
+          </div>
         </div>
       </div>
 

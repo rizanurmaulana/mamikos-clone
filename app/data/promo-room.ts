@@ -5,7 +5,7 @@ export const promoRooms = [
     city: "Jakarta Pusat",
     image:
       "https://static.mamikos.com/uploads/cache/data/style/2026-06-17/nUTOu1jI.-540x720.jpg",
-    logo: "/images/icon-kos-andalan.svg",
+    verified: "/images/icon-kos-andalan.svg",
     type: "Putri",
     roomLeft: undefined,
     title: "Kost Brown Residence Tipe Executive",
@@ -21,7 +21,7 @@ export const promoRooms = [
     city: "Bandung",
     image:
       "https://static.mamikos.com/uploads/cache/data/style/2020-02-16/yJS3zPwV-540x720.jpg",
-    logo: "/images/icon-kos-andalan.svg",
+    verified: "/images/icon-kos-andalan.svg",
     type: "Campur",
     roomLeft: undefined,
     title: "Kost Akbar Telkom University Tipe Vip Eksklusif",
@@ -36,7 +36,7 @@ export const promoRooms = [
     city: "Jakarta Barat",
     image:
       "https://static.mamikos.com/uploads/cache/data/style/2026-04-29/bh78wvB4-540x720.jpg",
-    logo: "/images/icon-kos-andalan.svg",
+    verified: "/images/icon-kos-andalan.svg",
     type: "Putra",
     roomLeft: undefined,
     title: "Kost Abdi Delima Residence Tanjung Duren Tipe B",
@@ -51,7 +51,7 @@ export const promoRooms = [
     city: "Tangerang",
     image:
       "https://static.mamikos.com/uploads/cache/data/style/2020-05-03/YBUWMpLZ-540x720.jpg",
-    logo: "/images/icon-kos-andalan.svg",
+    verified: "/images/icon-kos-andalan.svg",
     type: "Putri",
     roomLeft: 2,
     title: "Kost Zeal 1 Tipe A Benda Tangerang",
@@ -66,7 +66,7 @@ export const promoRooms = [
     city: "Yogyakarta",
     image:
       "https://static.mamikos.com/uploads/cache/data/style/2019-01-09/bCHAy8y3-540x720.jpg",
-    logo: "/images/icon-kos-andalan.svg",
+    verified: "/images/icon-kos-andalan.svg",
     type: "Campur",
     roomLeft: 5,
     title: "Kost Malioboro Residence",
@@ -81,7 +81,7 @@ export const promoRooms = [
     city: "Malang",
     image:
       "https://static.mamikos.com/uploads/cache/data/style/2020-02-16/yJS3zPwV-540x720.jpg",
-    logo: "/images/icon-kos-andalan.svg",
+    verified: "/images/icon-kos-andalan.svg",
     type: "Putra",
     roomLeft: 2,
     title: "Kost Soekarno Hatta",
